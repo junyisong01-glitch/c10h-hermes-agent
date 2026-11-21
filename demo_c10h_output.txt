@@ -1,0 +1,66 @@
+================================================================
+C10H demo · 2026-11-21 19:05:38
+================================================================
+
+【0. 环境与版本】
+Hermes Agent v0.19.0 (2026.7.20)
+Install directory: /Users/songjunyi/.local/share/uv/tools/hermes-agent/lib/python3.12/site-packages
+Install method: pip
+Python: 3.12.14
+OpenAI SDK: 2.24.0
+Up to date
+
+【1. 配置链路：provider 到底指向谁（不采信模型自述，看文件）】
+--- /Users/songjunyi/.hermes/config.yaml ---
+model:
+  provider: openai-api
+  default: qwen3.5:4b
+--- /Users/songjunyi/.hermes/.env（键名保留，值只显示是否为占位） ---
+# 本机 ollama（OpenAI 兼容端点），零成本接入
+OPENAI_API_KEY=<本机 ollama 不校验，占位串>
+OPENAI_BASE_URL=http://127.0.0.1:11434/v1
+--- 本机 ollama 实际在跑的模型 ---
+  模型: qwen3.5:4b | 大小: 4.0 GB | digest: 3b6225ff07117608...
+
+【2. 自定义技能是否被真正识别（不是文件放了就算）】
+                         Installed Skills                         
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━┳━━━━━━━┳━━━━━━━━━┓
+┃ Name                     ┃ Category ┃ Source ┃ Trust ┃ Status  ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━╇━━━━━━━╇━━━━━━━━━┩
+│ cogseed-submit-preflight │          │ local  │ local │ enabled │
+└──────────────────────────┴──────────┴────────┴───────┴─────────┘
+0 hub-installed, 0 builtin, 1 local — 1 enabled, 0 disabled
+
+
+【3. 记忆是否真的落盘（文件为准）】
+--- /Users/songjunyi/.hermes/memories/USER.md ---
+宋俊毅学号：2025108600351；C10H 实施日期：2026-11-21；模型：Ollama qwen3.5:4b（本机部署）--- 字节数 ---
+     111 /Users/songjunyi/.hermes/memories/USER.md
+
+【4. 定时任务：配置成功 ≠ 自动化生效】
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                         Scheduled Jobs                                  │
+└─────────────────────────────────────────────────────────────────────────┘
+
+  04646455c72f [active]
+    Name:      c10-daily-log-reminder
+    Schedule:  0 9 * * *
+    Repeat:    ∞
+    Next run:  2026-11-22T09:00:00+08:00
+    Deliver:   local
+
+  ⚠  Gateway is not running — jobs won't fire automatically.
+     Start it with: hermes gateway install
+                    sudo hermes gateway install --system  # Linux servers
+     Check status:  hermes cron status
+--- 执行历史 ---
+No cron execution attempts recorded.
+
+【5. 记忆库与人格文件体积】
+-rw-------@ 1 songjunyi  staff    1477 Nov 21 19:02 /Users/songjunyi/.hermes/SOUL.md
+-rw-------@ 1 songjunyi  staff     513 Nov 21 19:02 /Users/songjunyi/.hermes/SOUL.md.default.bak
+-rw-r--r--@ 1 songjunyi  staff  475136 Nov 21 19:05 /Users/songjunyi/.hermes/state.db
+================================================================
+demo 结束
+================================================================
